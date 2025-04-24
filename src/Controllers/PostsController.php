@@ -47,4 +47,10 @@ class PostsController
     public function show(){
         
     }
+    
+    public function view($id){
+        $post = Post::find($id);
+        view('posts/view', compact('post'));
+    }
+    
 }
