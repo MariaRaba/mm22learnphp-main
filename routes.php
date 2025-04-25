@@ -17,8 +17,9 @@ Route::post('/admin/posts', [PostsController::class, 'store']);
 Route::get('/admin/posts/delete', [PostsController::class, 'destroy']);
 Route::get('/admin/posts/edit', [PostsController::class, 'edit']);
 Route::post('/admin/posts/edit', [PostsController::class, 'update']);
-Route::get('/admin/posts/view/{id}', [PostsController::class, 'view']); //maybe??? prob should remove {id}, idk
-
+//
+Route::get('/admin/posts/view?id=', [PostsController::class, 'view']); 
+//
 Route::get('/register', [AuthController::class, 'registerForm']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/login', [AuthController::class, 'loginForm']);
