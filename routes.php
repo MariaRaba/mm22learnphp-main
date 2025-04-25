@@ -18,7 +18,13 @@ Route::get('/admin/posts/delete', [PostsController::class, 'destroy']);
 Route::get('/admin/posts/edit', [PostsController::class, 'edit']);
 Route::post('/admin/posts/edit', [PostsController::class, 'update']);
 //
-Route::get('/admin/posts/view?id=', [PostsController::class, 'view']); 
+Route::get('/admin/posts/view', function () {
+    $id = $_GET['id'] ?? null;
+    if (!$id) {
+        die('Post ID is missing.');
+    }
+    (new \App\Controllers\PostsController())->view($id);
+});
 //
 Route::get('/register', [AuthController::class, 'registerForm']);
 Route::post('/register', [AuthController::class, 'register']);
