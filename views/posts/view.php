@@ -22,7 +22,7 @@
             <td><?= $post->created_at; ?></td>
         </tr>
         <tr>
-            <th>Published at:</th>
+            <th>Updated at:</th>
             <td><?= $post->updated_at; ?></td>
         </tr>
     </table>
