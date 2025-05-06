@@ -25,4 +25,4 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
 //
-Route::get('/admin/posts/show', [PostsController::class, 'show']);
+Route::get('/admin/posts/view', [PostsController::class, 'show']);
