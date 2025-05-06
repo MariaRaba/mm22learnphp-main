@@ -24,12 +24,33 @@ class PostsController
     }
 
     public function edit(){
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            redirect('/admin/posts');
+            return;
+        }
+
         $post = Post::find($_GET['id']);
+        if (!$post) {
+            redirect('/admin/posts');
+            return;
+        }
+
         view('posts/edit', compact('post'));
     }
 
     public function update(){
+
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            redirect('/admin/posts');
+            return;
+        }
+
         $post = Post::find($_GET['id']);
+        if (!$post) {
+            redirect('/admin/posts');
+            return;
+        }
+
         $post->title = $_POST['title'];
         $post->body = $_POST['body'];
         $post->save();
@@ -37,20 +58,22 @@ class PostsController
     }
 
     public function destroy(){
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            redirect('/admin/posts');
+            return;
+        }
+
         $post = Post::find($_GET['id']);
-        if($post){
+        if ($post) {
             $post->delete();
         }
         redirect('/admin/posts');
     }
 
-    public function show(){
-        
+//
+    public function show(){ 
+        $post = Post::find($_GET['id']);
+        view('posts/show', compact('post'));
     }
-    
-    public function view($id){
-        $post = Post::find($id);
-        view('posts/view', compact('post'));
-    }
-    
+
 }

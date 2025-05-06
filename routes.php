@@ -17,17 +17,12 @@ Route::post('/admin/posts', [PostsController::class, 'store']);
 Route::get('/admin/posts/delete', [PostsController::class, 'destroy']);
 Route::get('/admin/posts/edit', [PostsController::class, 'edit']);
 Route::post('/admin/posts/edit', [PostsController::class, 'update']);
-//
-Route::get('/admin/posts/view', function () {
-    $id = $_GET['id'] ?? null;
-    if (!$id) {
-        die('Post ID is missing.');
-    }
-    (new \App\Controllers\PostsController())->view($id);
-});
-//
+
 Route::get('/register', [AuthController::class, 'registerForm']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/login', [AuthController::class, 'loginForm']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout']);
+
+//
+Route::get('/admin/posts/show', [PostsController::class, 'show']);
